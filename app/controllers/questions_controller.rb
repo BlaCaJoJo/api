@@ -9,6 +9,7 @@ class QuestionsController < ApplicationController
   def show
     render json: Question.find(params[:id])
   end
+
   def as_json(arg)
     {id: id,
      member_id: member_id,
@@ -16,4 +17,5 @@ class QuestionsController < ApplicationController
      description: email_addresses
     }
   end
+  
 end
