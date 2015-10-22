@@ -34,8 +34,8 @@ vote_gen = []
   vote_gen << rand(2)
 end
 
-10.times do
-  Votes.create!(member_id: rand(10),
-    answer_id: rand(10) ? rand(2) == 0 : question_id: rand(10),
-    up: true ? rand(2) == 0 : down: true)
-end
+# 10.times do
+#   Votes.create!(member_id: rand(10),
+#     answer_id: rand(10) ? rand(2) == 0 : question_id: rand(10),
+#     up: true ? rand(2) == 0 : down: true)
+# end
