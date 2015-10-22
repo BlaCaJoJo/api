@@ -23,11 +23,3 @@ end
     desc: Faker::Lorem.paragraph,
     accepted: false)
 end
-
-10.times do
-  Vote.create!( member: rand(10),
-  if question_id
-    answer_id = rand(10)
-
-)
-end
