@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 10.times do
   Member.create!(name: Faker::Name.first_name,
-      email: Faker::Name.last_name,
+      email: Faker::Internet.email,
       password: "password")
 end
 
@@ -22,4 +22,20 @@ end
     member_id: rand(10),
     desc: Faker::Lorem.paragraph,
     accepted: false)
+end
+
+id_gen = []
+10.times do
+  id_gen << rand(2)
+end
+
+vote_gen = []
+10.times do
+  vote_gen << rand(2)
+end
+
+10.times do
+  Votes.create!(member_id: rand(10),
+    answer_id: rand(10) ? rand(2) == 0 : question_id: rand(10),
+    up: true ? rand(2) == 0 : down: true)
 end
