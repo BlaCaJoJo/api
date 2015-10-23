@@ -27,6 +27,15 @@ class QuestionsController < ApplicationController
     }
   end
 
+  def destroy
+    question = Question.find(params[:id])
+    if question.destroy
+      render json: "ITS HAD BEEN DECIDED"
+    else
+      render json: question.errors
+    end
+  end
+
   # private
   # def question_params
   #   params.require(:member).permit(:name, :email, :desc)

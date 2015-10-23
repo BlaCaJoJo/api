@@ -11,6 +11,15 @@ class MembersController < ApplicationController
   def index
     render json: Member.all
   end
+
+  def destroy
+    member = Member.find(params[:id])
+    if member.destroy
+      render json: "ITS HAD BEEN DECIDED"
+    else
+      render json: member.errors
+    end
+  end
   
   private
   def member_params
