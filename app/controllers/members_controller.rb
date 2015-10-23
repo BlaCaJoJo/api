@@ -12,17 +12,34 @@ class MembersController < ApplicationController
     render json: Member.all
   end
 
-  def destroy
+  def update
     member = Member.find(params[:id])
-    if member.destroy
-      render json: "ITS HAD BEEN DECIDED"
+    if member.token == params[:token]
+      if member.save
+        render json: member
+      else
+        render json: member.errors
+      end
     else
-      render json: member.errors
+      render json: "You shall not pass"
     end
   end
-  
+
+  def destroy
+    member = Member.find(params[:id])
+    if member.token == params[:token]
+      if member.destroy
+        render json: "ITS HAD BEEN DECIDED"
+      else
+        render json: member.errors
+      end
+    else
+      render json: "You shall not pass"
+    end
+  end
+
   private
   def member_params
-    params.require(:question).permit(:name, :email, :password)
+    params.require(:member).permit(:name, :email, :password)
   end
 end
