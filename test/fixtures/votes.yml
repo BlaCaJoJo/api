@@ -1,15 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  answer_id: 1
   member_id: 1
-  question_id: 1
-  up: false
-  down: false
+  up_down: false
+  vote_for_id: 1
+  vote_for_type: MyString
 
 two:
-  answer_id: 1
   member_id: 1
-  question_id: 1
-  up: false
-  down: false
+  up_down: false
+  vote_for_id: 1
+  vote_for_type: MyString
