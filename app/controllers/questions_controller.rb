@@ -7,11 +7,11 @@ class QuestionsController < ApplicationController
 
 
   def create
-    @question = Question.new(question_params)
-    if @question.save
-      render json: @question, notice:  'Question was successfully created.'
+  question = Question.new(member_id: params[:member_id], title: params[:title], desc: params[:desc])
+    if question.save
+      render json: question
     else
-      render :new
+      render json: question.errors
     end
   end
 
