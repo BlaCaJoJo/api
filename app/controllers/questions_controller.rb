@@ -5,14 +5,11 @@ class QuestionsController < ApplicationController
     render json: Question.all
   end
 
-  def new
-    @question = Question.new
-  end
 
   def create
     @question = Question.new(question_params)
     if @question.save
-      redirect_to @question, notice:  'Question was successfully created.'
+      render json: @question, notice:  'Question was successfully created.'
     else
       render :new
     end
@@ -29,5 +26,10 @@ class QuestionsController < ApplicationController
      description: email_addresses
     }
   end
+
+  # private
+  # def question_params
+  #   params.require(:member).permit(:name, :email, :desc)
+  # end
 
 end
