@@ -11,5 +11,9 @@ class MembersController < ApplicationController
   def index
     render json: Member.all
   end
-
+  
+  private
+  def member_params
+    params.require(:question).permit(:name, :email, :password)
+  end
 end
