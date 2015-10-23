@@ -7,4 +7,13 @@ class VotesController < ApplicationController
       render json: vote.errors
     end
   end
+
+  def destroy
+    vote = Vote.find(params[:id])
+    if vote.destroy
+      render json: "ITS HAD BEEN DECIDED"
+    else
+      render json: vote.errors
+    end
+  end
 end

@@ -8,6 +8,15 @@ class AnswersController < ApplicationController
     end
   end
 
+  def destroy
+    answer= Answer.find(params[:id])
+    if answer.destroy
+      render json: "ITS HAD BEEN DECIDED"
+    else
+      render json: answer.errors
+    end
+  end
+
   def index
     render json: Answer.all
   end
