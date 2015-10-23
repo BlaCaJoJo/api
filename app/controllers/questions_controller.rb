@@ -1,9 +1,21 @@
 class QuestionsController < ApplicationController
-  def create
-  end
+
 
   def index
     render json: Question.all
+  end
+
+  def new
+    @question = Question.new
+  end
+
+  def create
+    @question = Question.new(question_params)
+    if @question.save
+      redirect_to @question, notice:  'Question was successfully created.'
+    else
+      render :new
+    end
   end
 
   def show
@@ -17,5 +29,5 @@ class QuestionsController < ApplicationController
      description: email_addresses
     }
   end
-  
+
 end
