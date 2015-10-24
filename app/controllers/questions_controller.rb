@@ -45,12 +45,12 @@ class QuestionsController < ApplicationController
       render json: "You shall not pass"
     end
   end
-  
+
   def as_json(arg)
     {id: id,
      member_id: member_id,
      title: title,
-     description: email_addresses
+     desc: desc
     }
   end
 end

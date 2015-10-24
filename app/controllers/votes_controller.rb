@@ -1,4 +1,9 @@
 class VotesController < ApplicationController
+
+  def index
+    render json: Vote.all
+  end
+
   def create
   vote = Vote.new(up_down: params[:up_down], member_id: params[:member_id], vote_for_id: params[:vote_for_id], vote_for_type: params[:vote_for_type])
     if vote.member.token == params[:token]
