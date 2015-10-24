@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  root 'questions#index'
   resources :answers
   resources :questions
   resources :members
