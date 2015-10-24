@@ -37,6 +37,9 @@ class AnswersController < ApplicationController
       render json: "You shall not pass"
     end
   end
+  def show
+    render json: Answer.find(params[:id])
+  end
 
   def index
     render json: Answer.all
