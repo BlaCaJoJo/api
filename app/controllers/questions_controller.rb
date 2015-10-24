@@ -18,9 +18,9 @@ class QuestionsController < ApplicationController
 
   def show
     question = Question.find(params[:id])
-    # up_votes = Vote.find(question.votes)
-    # down_votes = Vote.find(params[:id]).vote_for
-    vote_rating = 9
+    up_votes = question.votes.where(up_down: true).count
+    down_votes = question.votes.where(up_down: false).count
+    vote_rating = up_votes - down_votes
 
     render json: {
       id: question.id,
@@ -28,7 +28,7 @@ class QuestionsController < ApplicationController
       title: question.title,
       description: question.desc,
       date: question.reformatted_date,
-      vote_rating: question.votes,
+      vote_rating: vote_rating,
       answers: question.answers
     }
   end
