@@ -1,0 +1,35 @@
+<h1>Welcome to full stack overflow documentation</h1>
+
+<p>Creating a member;</p>
+<p>Strong params permit name, email and password in order to create a member.</p>
+<p>localhost3000/members?name="You"+email="Your@email.com"+password="password"</p>
+<p>localhost will be changed to the url of your app.</p>
+
+members GET    /members(.:format)            members#index
+        POST   /members(.:format)            members#create
+member  GET    /members/:id(.:format)        members#show
+
+
+<p>Creating a question;</p>
+<p>Required fields: member_id, title and desc (description) in order to create a question.</p>
+<p>Also token validation only allows users who are logged in to create a question / answer / or vote.</p>
+<p>localhost3000/questions?member_id=1+title="Title"+desc="Description of your question."</p>
+
+question  GET    /questions/:id(.:format)      questions#show
+questions GET    /questions(.:format)          questions#index
+          POST   /questions(.:format)          questions#create
+
+<p>Creating an answer;</p>
+<p>Required fields: question_id, member_id, desc (description), and accepted (if the owner of the question has accepted this answer to be a valid fix for the problem)</p>
+<p>A token is required in order to create an answer</p>
+<p>localhost3000/answeers?question_id=1+member_id=1+desc="description of your answer"+accepted=true</p>
+
+answer GET    /answers/:id(.:format)        answers#show
+       POST   /answers(.:format)            answers#create
+
+<p>Creating a vote;</p>
+<p>Required fields: member_id, up_down (if it is voted up or down), vote_for_id (foreign key depending on type), vote_for_type (wether its a question of answer) </p>
+<p>A token is required in order to create an vote</p>
+<p>localhost3000/votes?member_id=1+up_down=true+vote_for_id=1+vote_for_type="answer"</p>
+
+       POST   /votes(.:format)              votes#create
