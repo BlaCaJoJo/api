@@ -17,19 +17,19 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    question = Question.find(params[:id])
-    up_votes = question.votes.where(up_down: true).count
-    down_votes = question.votes.where(up_down: false).count
-    vote_rating = up_votes - down_votes
+    @question = Question.find(params[:id])
+    @up_votes = @question.votes.where(up_down: true).count
+    @down_votes = @question.votes.where(up_down: false).count
+    @vote_rating = @up_votes - @down_votes
 
     render json: {
-      id: question.id,
-      member_name: question.member.name,
-      title: question.title,
-      description: question.desc,
-      date: question.reformatted_date,
-      vote_rating: vote_rating,
-      answers: question.answers
+      question_id: @question.id,
+      member_name: @question.member.name,
+      title: @question.title,
+      description: @question.desc,
+      date: @question.reformatted_date,
+      vote_rating: @vote_rating,
+      answers: @question.answer_bd
     }
   end
 
