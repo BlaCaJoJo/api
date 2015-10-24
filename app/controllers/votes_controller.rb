@@ -37,4 +37,8 @@ class VotesController < ApplicationController
       render json: "You shall not pass"
     end
   end
+
+  def index
+    render json: Vote.all
+  end
 end
