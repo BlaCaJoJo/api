@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 10.times do
   Member.create!(name: Faker::Name.first_name,
-      email: Faker::Name.last_name,
+      email: Faker::Internet.email,
       password: "password")
 end
 
@@ -27,7 +27,7 @@ end
 table = ["Answer", "Question"]
 
 10.times do
-  Vote.create!(member_id: rand(10),
+  Vote.create!(member_id: rand(1...10),
     up_down: rand(2),
     vote_for_id: rand(10),
     vote_for_type: table[rand(2)])
