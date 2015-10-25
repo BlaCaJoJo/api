@@ -4,4 +4,26 @@
   <%= submit_tag "Search" %>
 <% end %>
 
-<p>Enter your question</p>
+<% if @question %>
+  <table>
+    <thead>
+      <tr>
+        <th>Member</th>
+        <th>Question Title</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @question.each do |question| %>
+        <tr>
+          <td><%= question.member_id =%></td>
+          <td><%= question.title =%></td>
+          <td><%= question.desc =%></td>
+        </tr>
+      <% end %>
+    <tbody>
+  </table>
+  <% else %>
+    <p>Search somin</p>
+  <% end %>

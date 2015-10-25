@@ -2,11 +2,16 @@ Rails.application.routes.draw do
   root 'questions#index'
 
   get 'members/documentation'
-  get 'members/search'
   resources :answers
-  resources :questions
+  resources :questions do
+    collection do
+      get 'search'
+    end
+  end
   resources :members
   resources :votes
+
+
   # get 'members/create'
   #
   # get 'votes/create'

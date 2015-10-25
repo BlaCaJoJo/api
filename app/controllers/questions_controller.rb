@@ -16,10 +16,12 @@ class QuestionsController < ApplicationController
   def search
     if params[:search]
       # @question = Question.where("title LIKE '%?%'", params[:search])
-      questions = Question.arel_table
-      @question = Question.where(questions[:title].matches("%#{params[:search]}%"))
+      # questions = Question.arel_table
+      # @question = Question.where(questions[:title].matches("%#{params[:search]}%"))
 
       @question = Question.where("title LIKE ?", "%#{params[:search]}%")
+
+    end
   end
 
   def index
