@@ -27,7 +27,9 @@ class QuestionsController < ApplicationController
     @list = []
     @questions.each do |q|
       @list << {
-        member_id: q.member,
+        member_id: q.member.id,
+        member_name: q.member.name,
+        member_email: q.member.email,
         question_id: q.id,
         title: q.title,
         description: q.desc,
@@ -44,8 +46,8 @@ class QuestionsController < ApplicationController
 
     render json: {
       token: @question.member.token,
-      member_name: @question.member.name,
       member_id: @question.member.id,
+      member_name: @question.member.name,
       member_email: @question.member.email,
       question_id: @question.id,
       title: @question.title,
