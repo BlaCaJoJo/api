@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   root 'questions#index'
+
+  get 'members/documentation'
+  get 'members/search'
   resources :answers
   resources :questions
   resources :members
