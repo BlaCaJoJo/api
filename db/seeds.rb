@@ -17,12 +17,12 @@ end
       member_id: rand(10))
 end
 
-10.times do
-  Answer.create!(question_id: rand(10),
-    member_id: rand(10),
-    desc: Faker::Lorem.paragraph.times,
-    accepted: false)
-end
+# 10.times do
+#   Answer.create!(question_id: rand(10),
+#     member_id: rand(10),
+#     desc: Faker::Lorem.paragraph.times,
+#     accepted: false)
+# end
 
 table = ["Answer", "Question"]
 
