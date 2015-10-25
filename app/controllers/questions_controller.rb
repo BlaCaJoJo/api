@@ -21,6 +21,21 @@ class QuestionsController < ApplicationController
 
       @question = Question.where("title LIKE ?", "%#{params[:search]}%")
 
+      @list = []
+      @question.each do |q|
+        @list << {
+          member_id: q.member.id,
+          member_name: q.member.name,
+          member_email: q.member.email,
+          question_id: q.id,
+          title: q.title,
+          description: q.desc,
+          date: q.reformatted_date,
+          vote_rating: q.vote_rating,
+          answers: q.answer_breakdown
+        }
+      end
+      render json: @list.sort_by { |h| h[:vote_rating]}.reverse
     end
   end
 
