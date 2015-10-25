@@ -11,10 +11,19 @@ class Question < ActiveRecord::Base
     self.created_at.strftime("Posted on %m/%d/%y at %I:%M%p")
   end
 
-  def answer_bd
+  def vote_rating
+    @up_votes = self.votes.where(up_down: true).count
+    @down_votes = self.votes.where(up_down: false).count
+    @vote_rating = @up_votes - @down_votes
+  end
+
+  def answer_breakdown
     list = []
     self.answers.each do |a|
       list << {
+        member_id: a.member.id,
+        member_name: a.member.name,
+        member_email: a.member.email,
         answer_id: a.id,
         desc: a.desc,
         accepted: a.accepted,

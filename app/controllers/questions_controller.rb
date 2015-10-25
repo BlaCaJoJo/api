@@ -23,23 +23,36 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    render json: Question.all
+    @questions = Question.all
+    @list = []
+    @questions.each do |q|
+      @list << {
+        member_id: q.member,
+        question_id: q.id,
+        title: q.title,
+        description: q.desc,
+        date: q.reformatted_date,
+        vote_rating: q.vote_rating,
+        answers: q.answer_breakdown
+      }
+    end
+    render json: @list
   end
 
   def show
     @question = Question.find(params[:id])
-    @up_votes = @question.votes.where(up_down: true).count
-    @down_votes = @question.votes.where(up_down: false).count
-    @vote_rating = @up_votes - @down_votes
 
     render json: {
-      question_id: @question.id,
+      token: @question.member.token,
       member_name: @question.member.name,
+      member_id: @question.member.id,
+      member_email: @question.member.email,
+      question_id: @question.id,
       title: @question.title,
       description: @question.desc,
       date: @question.reformatted_date,
-      vote_rating: @vote_rating,
-      answers: @question.answer_bd
+      vote_rating: @question.vote_rating,
+      answers: @question.answer_breakdown
     }
   end
 

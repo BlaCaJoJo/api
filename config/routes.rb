@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :questions
   resources :members
   resources :votes
+
   # get 'members/create'
   #
   # get 'votes/create'
