@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+
   def create
     question = Question.new(member_id: params[:member_id], title: params[:title], desc: params[:desc])
     if question.member.token == params[:token]
@@ -10,6 +11,15 @@ class QuestionsController < ApplicationController
     else
       render json: "You shall not pass"
     end
+  end
+
+  def search
+    if params[:search]
+      # @question = Question.where("title LIKE '%?%'", params[:search])
+      questions = Question.arel_table
+      @question = Question.where(questions[:title].matches("%#{params[:search]}%"))
+
+      @question = Question.where("title LIKE ?", "%#{params[:search]}%")
   end
 
   def index
