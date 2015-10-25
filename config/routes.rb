@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   resources :members
   resources :votes
 
-
   # get 'members/create'
   #
   # get 'votes/create'
