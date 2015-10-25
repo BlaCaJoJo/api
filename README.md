@@ -1,1 +1,1 @@
-[embed]https://github.com/BlaCaJoJo/api/files/20310/BlaCaJoJo.pdf[/embed]
+![Download PDF version of workflow diagram](https://github.com/BlaCaJoJo/api/files/20310/BlaCaJoJo.pdf)
