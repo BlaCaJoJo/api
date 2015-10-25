@@ -20,6 +20,7 @@ class QuestionsController < ApplicationController
       @question = Question.where(questions[:title].matches("%#{params[:search]}%"))
 
       @question = Question.where("title LIKE ?", "%#{params[:search]}%")
+    end
   end
 
   def index
