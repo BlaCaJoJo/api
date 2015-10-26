@@ -15,9 +15,6 @@ class QuestionsController < ApplicationController
 
   def search
     if params[:search]
-      # @question = Question.where("title LIKE '%?%'", params[:search])
-      # questions = Question.arel_table
-      # @question = Question.where(questions[:title].matches("%#{params[:search]}%"))
 
       @question = Question.where("title LIKE ?", "%#{params[:search]}%")
 
@@ -60,19 +57,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
-
-    render json: {
-      token: @question.member.token,
-      member_id: @question.member.id,
-      member_name: @question.member.name,
-      member_email: @question.member.email,
-      question_id: @question.id,
-      title: @question.title,
-      description: @question.desc,
-      date: @question.reformatted_date,
-      vote_rating: @question.vote_rating,
-      answers: @question.answer_breakdown
-    }
+    render json: @question.reformat_list
   end
 
   def update

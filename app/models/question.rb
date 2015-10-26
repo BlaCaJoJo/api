@@ -33,4 +33,19 @@ class Question < ActiveRecord::Base
     end
     list
   end
+
+  def reformat_list
+    list = {
+        member_id: self.member.id,
+        member_name: self.member.name,
+        member_email: self.member.email,
+        question_id: self.id,
+        title: self.title,
+        description: self.desc,
+        date: self.reformatted_date,
+        vote_rating: self.vote_rating,
+        answers: self.answer_breakdown
+      }
+    list
+  end
 end
